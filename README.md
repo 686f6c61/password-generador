@@ -2,6 +2,8 @@
 
 Este proyecto es una aplicación web interactiva para generar contraseñas seguras y personalizables. Utiliza HTML, CSS (Materialize) y JavaScript para ofrecer múltiples opciones de generación de contraseñas, incluyendo el uso del movimiento del ratón como fuente de entropía. Es una herramienta fácil de usar y completamente adaptable a dispositivos móviles.
 
+![Descripción de la imagen](Generador-de-Contraseñas-Seguras.png)
+
 ## Características
 
 - **Generación por Movimiento del Ratón**: Las contraseñas se generan utilizando el movimiento del ratón como fuente de entropía.
