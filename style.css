@@ -1,0 +1,118 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.container .card-panel {
+  width: 100%;  
+  margin: 0 auto;
+  background-color: transparent; /* Fondo transparente */
+}
+
+ul li::before {
+  content: ''; /* Eliminamos la numeración */
+}
+
+body {
+  counter-reset: li; 
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.range-label {
+  margin-bottom: 10px; 
+  color: #1565C0; /* Azul de Materialize */
+}
+
+.switch-align-left .row {
+  display: flex;
+  align-items: center;
+  background-color: transparent; /* Fondo transparente */
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  color: #1565C0; /* Azul de Materialize */
+  background-color: transparent; /* Fondo transparente */
+}
+
+.switch .lever-container {
+  margin-right: 20px; 
+}
+
+.switch .lever.blue,
+.lever.blue {
+  background-color: #1565C0; /* Azul de Materialize */
+}
+
+.switch-label {
+  font-size: 18px; 
+  color: #1565C0; /* Azul de Materialize */
+}
+
+.custom-title {
+  color: #1565C0; 
+}
+
+#length, #word-count {
+  width: 100%;
+  margin-top: 10px; 
+}
+
+.custom-button {
+  margin: 20px 0;
+}
+
+.card-panel h2 {
+  margin-bottom: 20px; 
+  color: #1565C0; 
+}
+
+.generated-password-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  word-wrap: break-word; /* Permite que la palabra larga se ajuste y rompa en líneas nuevas */
+}
+
+#copy-button.copy-btn {
+  background-color: #1565C0; 
+}
+
+.password-generator-area {
+  border: 2px dashed #1565C0;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #1565C0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+footer {
+  margin-top: 50px;
+  padding: 10px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-panel {
+  height: auto; /* Aseguramos que el card crezca según sea necesario */
+}
+
+.row .col.s12.m6 {
+  display: flex;
+  flex-direction: column;
+}

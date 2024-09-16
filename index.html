@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Contraseñas Seguras</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="center-align blue-text text-darken-2">Generador de Contraseñas Seguras</h1>
+
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+          <h2 class="center-align blue-text text-darken-2"><i class="material-icons medium">lock</i> Generar Contraseña</h2>
+
+          <div class="row">
+            <div class="col s12 input-field">
+              <label for="length" class="range-label blue-text text-darken-2">Longitud de la Contraseña:</label>
+              <input type="number" id="length" min="14" max="100" value="14" oninput="updateLengthValue(this.value)">
+            </div>
+          </div>
+
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2">
+                <input type="checkbox" id="lowercase" checked onclick="toggleOtherOptions('lowercase')">
+                <span class="lever blue darken-2"></span>
+                Minúsculas (a-z)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2">
+                <input type="checkbox" id="uppercase" checked onclick="toggleOtherOptions('uppercase')">
+                <span class="lever blue darken-2"></span>
+                Mayúsculas (A-Z)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2">
+                <input type="checkbox" id="numbers" checked onclick="toggleOtherOptions('numbers')">
+                <span class="lever blue darken-2"></span>
+                Números (0-9)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2">
+                <input type="checkbox" id="symbols" checked onclick="toggleOtherOptions('symbols')">
+                <span class="lever blue darken-2"></span>
+                Símbolos (!@#$%^&*)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2">
+                <input type="checkbox" id="brackets" onclick="toggleOtherOptions('brackets')">
+                <span class="lever blue darken-2"></span>
+                Brackets ([]{}())
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2">
+                <input type="checkbox" id="high-ansi" onclick="toggleOtherOptions('high-ansi')">
+                <span class="lever blue darken-2"></span>
+                High ansi characters (±¥µç)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2">
+                <input type="checkbox" id="words" onclick="toggleWordCount()">
+                <span class="lever blue darken-2"></span>
+                Palabras (ej. parturition-chirographic-tercentenaries)
+              </label>
+            </div>
+          </div>
+          <div class="row" id="word-count-row" style="display:none;">
+            <div class="col s12 input-field">
+              <label for="word-count" class="range-label blue-text text-darken-2">Número de Palabras:</label>
+              <input type="number" id="word-count" min="3" max="25" value="3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row center-align custom-button">
+      <div class="col s12">
+        <button id="generate-button" class="waves-effect waves-light btn blue darken-2"><i class="material-icons left">autorenew</i> Generar Contraseña</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+          <h2 class="center-align blue-text text-darken-2"><i class="material-icons medium">mouse</i> Mover el ratón para generar contraseña</h2>
+          <div class="password-generator-area" id="password-generator-area">
+            <ul class="blue-text text-darken-2">
+              <li><i class="material-icons">sync</i> Mueve el ratón dentro del cuadro para generar la contraseña</li>
+              <li><i class="material-icons">content_copy</i> Haz clic en el cuadro para copiar la contraseña al portapapeles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+          <div class="row center-align">
+            <div class="col s12">
+              <p class="generated-password-text" id="generated-password"></p>
+            </div>
+          </div>
+          <div class="row center-align">
+            <div class="col s12">
+              <button id="copy-button" class="waves-effect waves-light btn blue darken-2">Copiar al Portapapeles</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón de "Seguridad de la contraseña" -->
+    <div class="row center-align custom-button">
+      <div class="col s12">
+        <a class="waves-effect waves-light btn blue darken-2" href="https://es.wikipedia.org/wiki/Seguridad_de_la_contraseña#cite_note-25" target="_blank"><i class="material-icons left">language</i> Ir a SEGURIDAD DE LA CONTRASEÑA</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="notification" class="notification" style="display: none;">
+    ¡Contraseña copiada al portapapeles!
+  </div>
+
+  <footer class="center-align">
+    <p>❤️ de R 2024</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="module" src="palabras.js"></script>
+  <script type="module" src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.collapsible');
+      var instances = M.Collapsible.init(elems);
+    });
+
+    document.getElementById('copy-button').addEventListener('click', function() {
+      const password = document.getElementById('generated-password').innerText;
+      const textarea = document.createElement('textarea');
+      textarea.value = password;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      showCopiedNotification();
+    });
+
+    const options = ['lowercase', 'uppercase', 'numbers', 'symbols', 'brackets', 'high-ansi'];
+    
+    function toggleOtherOptions(selectedId) {
+      const isSelected = document.getElementById(selectedId).checked;
+      if (isSelected) {
+        document.getElementById('words').checked = false;
+        document.getElementById('word-count-row').style.display = 'none';
+        options.forEach(option => {
+          document.getElementById(option).disabled = false; 
+        });
+      } else {
+        document.getElementById(selectedId).checked = false;
+      }
+    }
+
+    function toggleWordCount() {
+      const useWords = document.getElementById('words').checked;
+      const wordCountRow = document.getElementById('word-count-row');
+      wordCountRow.style.display = useWords ? 'block' : 'none';
+      
+      options.forEach(option => {
+        document.getElementById(option).disabled = useWords;
+        if (useWords) {
+          document.getElementById(option).checked = false;
+        }
+      });
+    }
+    
+    function showCopiedNotification() {
+      const notification = document.getElementById('notification');
+      notification.style.display = 'block';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
