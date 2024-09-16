@@ -1,118 +1,139 @@
+/* Configuración global para ocupar toda la pantalla del navegador */
 html {
-  height: 100%;
-  width: 100%;
+  height: 100%; /* La altura del HTML se ajusta al 100% del viewport */
+  width: 100%;  /* El ancho del HTML se ajusta al 100% del viewport */
 }
 
+/* Estilo para el panel de tarjetas (contenedor principal) */
 .container .card-panel {
-  width: 100%;  
-  margin: 0 auto;
-  background-color: transparent; /* Fondo transparente */
+  width: 100%;  /* El ancho del panel ocupa el 100% del contenedor */
+  margin: 0 auto;  /* Centra el panel horizontalmente */
+  background-color: transparent; /* Fondo transparente para el panel */
 }
 
+/* Elimina el contenido anterior de los elementos de lista (ul > li) */
 ul li::before {
-  content: ''; /* Eliminamos la numeración */
+  content: ''; /* Se elimina cualquier contenido generado antes de los elementos de la lista */
 }
 
+/* Establece un contador para las listas que utilicen pseudo-elementos */
 body {
-  counter-reset: li; 
+  counter-reset: li;  /* Inicializa el contador para los elementos de lista */
 }
 
+/* Estilo para los campos de entrada (input), los organiza verticalmente */
 .input-field {
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  /* Los elementos hijos se alinean en columna */
 }
 
+/* Estilo para las etiquetas que muestran la longitud seleccionada de la contraseña */
 .range-label {
-  margin-bottom: 10px; 
-  color: #1565C0; /* Azul de Materialize */
+  margin-bottom: 10px;  /* Añade espacio debajo de la etiqueta */
+  color: #1565C0; /* Azul oscuro de Materialize */
 }
 
+/* Alinea los switch a la izquierda en la fila */
 .switch-align-left .row {
   display: flex;
-  align-items: center;
-  background-color: transparent; /* Fondo transparente */
+  align-items: center;  /* Alinea los switches verticalmente en el centro */
+  background-color: transparent; /* Fondo transparente para la fila */
 }
 
+/* Estilo para los switches (interruptores) */
 .switch {
   display: flex;
-  align-items: center;
-  color: #1565C0; /* Azul de Materialize */
-  background-color: transparent; /* Fondo transparente */
+  align-items: center;  /* Alinea los elementos del switch verticalmente */
+  color: #1565C0; /* Color azul oscuro de Materialize */
+  background-color: transparent;  /* Fondo transparente */
 }
 
+/* Margen derecho para el contenedor del interruptor */
 .switch .lever-container {
-  margin-right: 20px; 
+  margin-right: 20px; /* Añade espacio a la derecha del switch */
 }
 
-.switch .lever.blue,
-.lever.blue {
-  background-color: #1565C0; /* Azul de Materialize */
+/* Cambia el color del switch cuando está activado */
+.switch .lever.blue, .lever.blue {
+  background-color: #1565C0; /* Azul oscuro de Materialize */
 }
 
+/* Estilo para la etiqueta que acompaña al switch */
 .switch-label {
-  font-size: 18px; 
-  color: #1565C0; /* Azul de Materialize */
+  font-size: 18px;  /* Tamaño de fuente grande para la etiqueta del switch */
+  color: #1565C0;  /* Azul oscuro de Materialize */
 }
 
+/* Estilo para títulos personalizados */
 .custom-title {
-  color: #1565C0; 
+  color: #1565C0;  /* Azul oscuro de Materialize */
 }
 
+/* Estilo para el input de longitud de la contraseña y el input de número de palabras */
 #length, #word-count {
-  width: 100%;
-  margin-top: 10px; 
+  width: 100%; /* Ocupa el 100% del ancho del contenedor */
+  margin-top: 10px; /* Añade espacio superior */
 }
 
+/* Estilo personalizado para los botones */
 .custom-button {
-  margin: 20px 0;
+  margin: 20px 0; /* Añade margen superior e inferior */
 }
 
+/* Estilo para los títulos dentro del panel de tarjetas */
 .card-panel h2 {
-  margin-bottom: 20px; 
-  color: #1565C0; 
+  margin-bottom: 20px;  /* Añade espacio debajo del título */
+  color: #1565C0;  /* Azul oscuro de Materialize */
 }
 
+/* Estilo para el texto de la contraseña generada */
 .generated-password-text {
-  font-size: 1.5em;
-  font-weight: bold;
-  word-wrap: break-word; /* Permite que la palabra larga se ajuste y rompa en líneas nuevas */
+  font-size: 1.5em; /* Tamaño de fuente grande para la contraseña */
+  font-weight: bold; /* Negrita */
+  word-wrap: break-word;  /* Permite que la contraseña se ajuste en múltiples líneas si es muy larga */
 }
 
+/* Estilo para el botón de copiar */
 #copy-button.copy-btn {
-  background-color: #1565C0; 
+  background-color: #1565C0;  /* Azul oscuro de Materialize */
 }
 
+/* Estilo para el área donde el usuario mueve el ratón para generar contraseñas */
 .password-generator-area {
-  border: 2px dashed #1565C0;
-  padding: 20px;
-  text-align: center;
-  margin-top: 20px;
-  cursor: pointer;
+  border: 2px dashed #1565C0;  /* Borde discontinuo azul oscuro */
+  padding: 20px;  /* Espacio interno de 20px */
+  text-align: center;  /* Texto centrado */
+  margin-top: 20px;  /* Añade espacio superior */
+  cursor: pointer;  /* Cambia el cursor a una mano cuando se pasa por encima */
 }
 
+/* Estilo para la notificación que aparece al copiar la contraseña */
 .notification {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #1565C0;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: fixed; /* Fija la posición de la notificación */
+  bottom: 20px; /* Se posiciona a 20px del borde inferior */
+  right: 20px; /* Se posiciona a 20px del borde derecho */
+  background-color: #1565C0; /* Azul oscuro de Materialize */
+  color: white; /* Texto en blanco */
+  padding: 10px 20px; /* Añade espacio interno */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra para dar efecto de elevación */
 }
 
+/* Estilo para el pie de página */
 footer {
-  margin-top: 50px;
-  padding: 10px 0;
-  background-color: #f9f9f9;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 50px; /* Añade espacio superior */
+  padding: 10px 0; /* Añade relleno vertical */
+  background-color: #f9f9f9; /* Color de fondo claro */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para el pie de página */
 }
 
+/* Asegura que el panel de la tarjeta crezca según su contenido */
 .card-panel {
-  height: auto; /* Aseguramos que el card crezca según sea necesario */
+  height: auto; /* La altura se ajusta automáticamente */
 }
 
+/* Flexbox para columnas en dispositivos medianos y pequeños */
 .row .col.s12.m6 {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Activa Flexbox */
+  flex-direction: column; /* Los elementos hijos se colocan en columna */
 }
