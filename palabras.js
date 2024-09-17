@@ -1,15 +1,9 @@
-// Función asincrónica para obtener un número determinado de palabras aleatorias desde una API externa.
+// Función asíncrona para obtener palabras aleatorias de una API
 async function obtenerPalabras(numPalabras) {
-  // Realizamos una solicitud a la API 'random-word-api' para obtener el número de palabras especificado.
-  // La URL incluye el parámetro `number` que corresponde a la cantidad de palabras solicitadas.
+  // Realiza una solicitud a la API de palabras aleatorias
   const response = await fetch(`https://random-word-api.herokuapp.com/word?number=${numPalabras}`);
-
-  // Convertimos la respuesta de la API a formato JSON, lo que nos devuelve un array de palabras.
+  // Convierte la respuesta a formato JSON
   const data = await response.json();
-
-  // Devolvemos el array de palabras obtenidas.
+  // Devuelve el array de palabras
   return data;
 }
-
-// Exportamos la función `obtenerPalabras` para que pueda ser utilizada en otros archivos, como `script.js`.
-export { obtenerPalabras };

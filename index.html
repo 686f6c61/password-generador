@@ -15,18 +15,18 @@
     <div class="row">
       <div class="col s12 m8 offset-m2">
         <div class="card-panel">
-          <h2 class="center-align blue-text text-darken-2"><i class="material-icons medium">lock</i> Generar Contraseña</h2>
+          <h2 class="center-align blue-text text-darken-2"><i class="material-icons small">lock</i> ¿Cómo quieres generar la contraseña? <i class="material-icons small">lock</i></h2>
 
           <div class="row">
             <div class="col s12 input-field">
-              <label for="length" class="range-label blue-text text-darken-2">Longitud de la Contraseña:</label>
+              <label for="length" class="range-label blue-text text-darken-2 password-length-label">Longitud de la Contraseña:</label>
               <input type="number" id="length" min="14" max="100" value="14" oninput="updateLengthValue(this.value)">
             </div>
           </div>
 
           <div class="row switch-align-left">
             <div class="col s12 switch">
-              <label class="blue-text text-darken-2">
+              <label class="blue-text text-darken-2 option-label">
                 <input type="checkbox" id="lowercase" checked onclick="toggleOtherOptions('lowercase')">
                 <span class="lever blue darken-2"></span>
                 Minúsculas (a-z)
@@ -35,7 +35,7 @@
           </div>
           <div class="row switch-align-left">
             <div class="col s12 switch">
-              <label class="blue-text text-darken-2">
+              <label class="blue-text text-darken-2 option-label">
                 <input type="checkbox" id="uppercase" checked onclick="toggleOtherOptions('uppercase')">
                 <span class="lever blue darken-2"></span>
                 Mayúsculas (A-Z)
@@ -44,7 +44,7 @@
           </div>
           <div class="row switch-align-left">
             <div class="col s12 switch">
-              <label class="blue-text text-darken-2">
+              <label class="blue-text text-darken-2 option-label">
                 <input type="checkbox" id="numbers" checked onclick="toggleOtherOptions('numbers')">
                 <span class="lever blue darken-2"></span>
                 Números (0-9)
@@ -53,7 +53,7 @@
           </div>
           <div class="row switch-align-left">
             <div class="col s12 switch">
-              <label class="blue-text text-darken-2">
+              <label class="blue-text text-darken-2 option-label">
                 <input type="checkbox" id="symbols" checked onclick="toggleOtherOptions('symbols')">
                 <span class="lever blue darken-2"></span>
                 Símbolos (!@#$%^&*)
@@ -62,7 +62,7 @@
           </div>
           <div class="row switch-align-left">
             <div class="col s12 switch">
-              <label class="blue-text text-darken-2">
+              <label class="blue-text text-darken-2 option-label">
                 <input type="checkbox" id="brackets" onclick="toggleOtherOptions('brackets')">
                 <span class="lever blue darken-2"></span>
                 Brackets ([]{}())
@@ -71,7 +71,7 @@
           </div>
           <div class="row switch-align-left">
             <div class="col s12 switch">
-              <label class="blue-text text-darken-2">
+              <label class="blue-text text-darken-2 option-label">
                 <input type="checkbox" id="high-ansi" onclick="toggleOtherOptions('high-ansi')">
                 <span class="lever blue darken-2"></span>
                 High ansi characters (±¥µç)
@@ -80,7 +80,7 @@
           </div>
           <div class="row switch-align-left">
             <div class="col s12 switch">
-              <label class="blue-text text-darken-2">
+              <label class="blue-text text-darken-2 option-label">
                 <input type="checkbox" id="words" onclick="toggleWordCount()">
                 <span class="lever blue darken-2"></span>
                 Palabras (ej. parturition-chirographic-tercentenaries)
@@ -97,16 +97,10 @@
       </div>
     </div>
 
-    <div class="row center-align custom-button">
-      <div class="col s12">
-        <button id="generate-button" class="waves-effect waves-light btn blue darken-2"><i class="material-icons left">autorenew</i> Generar Contraseña</button>
-      </div>
-    </div>
-
     <div class="row">
       <div class="col s12 m8 offset-m2">
         <div class="card-panel">
-          <h2 class="center-align blue-text text-darken-2"><i class="material-icons medium">mouse</i> Mover el ratón para generar contraseña</h2>
+          <h2 class="center-align blue-text text-darken-2"><i class="material-icons small">mouse</i> Mover el ratón para generar contraseña</h2>
           <div class="password-generator-area" id="password-generator-area">
             <ul class="blue-text text-darken-2">
               <li><i class="material-icons">sync</i> Mueve el ratón dentro del cuadro para generar la contraseña</li>
@@ -127,17 +121,25 @@
           </div>
           <div class="row center-align">
             <div class="col s12">
-              <button id="copy-button" class="waves-effect waves-light btn blue darken-2">Copiar al Portapapeles</button>
+              <button id="copy-button" class="waves-effect waves-light btn blue darken-2">COPIAR CONTRASEÑA</button>
+            </div>
+          </div>
+          <div class="row center-align">
+            <div class="col s12">
+              <button id="generate-button" class="waves-effect waves-light btn blue darken-2">GENERAR CONTRASEÑA</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Botón de "Seguridad de la contraseña" -->
-    <div class="row center-align custom-button">
+    <div class="row center-align">
       <div class="col s12">
-        <a class="waves-effect waves-light btn blue darken-2" href="https://es.wikipedia.org/wiki/Seguridad_de_la_contraseña#cite_note-25" target="_blank"><i class="material-icons left">language</i> Ir a SEGURIDAD DE LA CONTRASEÑA</a>
+        <p>
+          <a href="https://es.wikipedia.org/wiki/Seguridad_de_la_contraseña#cite_note-25" target="_blank" class="blue-text text-darken-2">
+            Ir a artículo de Seguridad de la Contraseña
+          </a>
+        </p>
       </div>
     </div>
 
@@ -148,64 +150,11 @@
   </div>
 
   <footer class="center-align">
-    <p>❤️ de R 2024</p>
+    <p>Generar Passwords y Contraseñas seguras con ❤️ de 00B en 2024</p>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script type="module" src="palabras.js"></script>
-  <script type="module" src="script.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.collapsible');
-      var instances = M.Collapsible.init(elems);
-    });
-
-    document.getElementById('copy-button').addEventListener('click', function() {
-      const password = document.getElementById('generated-password').innerText;
-      const textarea = document.createElement('textarea');
-      textarea.value = password;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      showCopiedNotification();
-    });
-
-    const options = ['lowercase', 'uppercase', 'numbers', 'symbols', 'brackets', 'high-ansi'];
-    
-    function toggleOtherOptions(selectedId) {
-      const isSelected = document.getElementById(selectedId).checked;
-      if (isSelected) {
-        document.getElementById('words').checked = false;
-        document.getElementById('word-count-row').style.display = 'none';
-        options.forEach(option => {
-          document.getElementById(option).disabled = false; 
-        });
-      } else {
-        document.getElementById(selectedId).checked = false;
-      }
-    }
-
-    function toggleWordCount() {
-      const useWords = document.getElementById('words').checked;
-      const wordCountRow = document.getElementById('word-count-row');
-      wordCountRow.style.display = useWords ? 'block' : 'none';
-      
-      options.forEach(option => {
-        document.getElementById(option).disabled = useWords;
-        if (useWords) {
-          document.getElementById(option).checked = false;
-        }
-      });
-    }
-    
-    function showCopiedNotification() {
-      const notification = document.getElementById('notification');
-      notification.style.display = 'block';
-      setTimeout(() => {
-        notification.style.display = 'none';
-      }, 2000);
-    }
-  </script>
+  <script src="palabras.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
