@@ -2,8 +2,6 @@
 
 Este proyecto es un generador de contraseñas seguras implementado en HTML, CSS y JavaScript. Permite a los usuarios crear contraseñas complejas y personalizadas con varias opciones de configuración.
 
-![Descripción de la imagen](Generador-de-Contraseñas-Seguras.png)
-
 ## Características
 
 - Generación de contraseñas basadas en movimientos del ratón para mayor aleatoriedad.

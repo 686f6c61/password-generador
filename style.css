@@ -171,3 +171,10 @@ h2 .material-icons.small {
   vertical-align: middle;
   margin-top: -4px;
 }
+
+/* Estilo para el texto de advertencia */
+.warning-text {
+  color: #ff9800;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
