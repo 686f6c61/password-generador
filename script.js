@@ -70,7 +70,7 @@ async function generatePassword() {
 
   if (useWords) {
     const words = await obtenerPalabras(numWords);
-    password = words.join('-=-'); // Cambiado de '-' a '-=-'
+    password = words.join('-=-');
     while (password.length < length) {
       password += generateProportionalChars(charset, 1);
     }
@@ -176,3 +176,22 @@ function showCopiedNotification() {
     notification.style.display = 'none';
   }, 2000);
 }
+
+// Función para alternar el menú
+function toggleMenu() {
+  document.querySelector('.menu-icon').classList.toggle('change');
+  document.getElementById('sideMenu').classList.toggle('open');
+}
+
+// Cerrar el menú si se hace clic fuera de él
+window.onclick = function(event) {
+  if (!event.target.matches('.menu-icon') && !event.target.matches('.bar1') && !event.target.matches('.bar2') && !event.target.matches('.bar3')) {
+    var menu = document.getElementById('sideMenu');
+    if (menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      document.querySelector('.menu-icon').classList.remove('change');
+    }
+  }
+}
+
+// Las funciones para cambiar el idioma se han eliminado ya que ahora usamos enlaces directos
