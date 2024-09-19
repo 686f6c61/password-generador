@@ -59,7 +59,7 @@ Contiene la función `obtenerPalabras()` que realiza una petición a una API ext
 
 ## Cómo Usar
 
-1. Abre `index.html` en un navegador web moderno.
+1. baja las dos carpetas si quieres el proyecto en ambos idimas y abre `index.html` en un navegador web moderno.
 2. Selecciona las opciones deseadas usando los switches.
 3. Ajusta la longitud de la contraseña si es necesario.
 4. Mueve el ratón dentro del área designada para generar una contraseña aleatoria, o usa el botón "GENERAR CONTRASEÑA".
