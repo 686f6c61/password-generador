@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Contraseñas Seguras | Crea Contraseñas Fuertes Online</title>
+  <meta name="description" content="Genera contraseñas seguras y aleatorias con nuestro generador online. Personaliza la longitud y los caracteres para crear contraseñas fuertes y únicas.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <!-- Open Graph para Redes Sociales -->
+  <meta property="og:title" content="Generador de Contraseñas Seguras" />
+  <meta property="og:description" content="Genera contraseñas seguras y aleatorias con nuestro generador online." />
+  <meta property="og:url" content="https://www.generadorpasswords.com/" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Generador de Contraseñas Seguras" />
+  <meta name="twitter:description" content="Genera contraseñas seguras y aleatorias con nuestro generador online." />
+
+  <!-- hreflang para SEO multilingüe -->
+  <link rel="alternate" href="/index_eng.html" hreflang="en" />
+  <link rel="alternate" href="/index.html" hreflang="es" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.generadorpasswords.com/" />
+
+  <!-- Datos estructurados Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Generador de Contraseñas Seguras",
+    "url": "https://www.generadorpasswords.com/",
+    "description": "Genera contraseñas seguras y aleatorias con nuestro generador online."
+  }
+  </script>
+
+  <!-- Archivos CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Selector de idioma en el menú -->
+  <div class="language-selector">
+    <a href="/index.html" id="es-lang">ES</a>
+    <a href="/index_eng.html" id="en-lang">ENG</a>
+  </div>
+
+  <div class="menu-icon" onclick="toggleMenu()" aria-label="Abrir menú lateral" tabindex="0" role="button">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+
+  <div class="side-menu" id="sideMenu">
+    <h3><i class="material-icons">stars</i><span>Otros Proyectos</span></h3>
+    <ul>
+      <li><a href="https://www.ghu.life" target="_blank" title="Generador de Historias de Usuario"><i class="material-icons">account_circle</i>GHU</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h1 class="center-align blue-text text-darken-2">Generador de Contraseñas Seguras</h1>
+
+    <!-- Sección de opciones de generación -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel wide-card">
+          <h2 class="center-align blue-text text-darken-2"><i class="material-icons small">lock</i> ¿Cómo quieres generar la contraseña? <i class="material-icons small">lock</i></h2>
+
+          <div class="row">
+            <div class="col s12 input-field">
+              <label for="length" class="blue-text text-darken-2 password-length-label">Longitud de la Contraseña:</label>
+              <input type="number" id="length" min="14" max="100" value="14" oninput="updateLengthValue(this.value)">
+              <p id="length-warning" class="warning-text" style="display: none;"></p>
+            </div>
+          </div>
+
+          <!-- Opciones de generación de contraseña -->
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2 option-label">
+                <input type="checkbox" id="lowercase" checked onclick="toggleOtherOptions('lowercase')">
+                <span class="lever blue darken-2"></span>
+                Minúsculas (a-z)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2 option-label">
+                <input type="checkbox" id="uppercase" checked onclick="toggleOtherOptions('uppercase')">
+                <span class="lever blue darken-2"></span>
+                Mayúsculas (A-Z)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2 option-label">
+                <input type="checkbox" id="numbers" checked onclick="toggleOtherOptions('numbers')">
+                <span class="lever blue darken-2"></span>
+                Números (0-9)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2 option-label">
+                <input type="checkbox" id="symbols" checked onclick="toggleOtherOptions('symbols')">
+                <span class="lever blue darken-2"></span>
+                Símbolos (!@#$%^&*)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2 option-label">
+                <input type="checkbox" id="brackets" onclick="toggleOtherOptions('brackets')">
+                <span class="lever blue darken-2"></span>
+                Paréntesis ([]{}())
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2 option-label">
+                <input type="checkbox" id="high-ansi" onclick="toggleOtherOptions('high-ansi')">
+                <span class="lever blue darken-2"></span>
+                Caracteres ANSI altos (±¥µç)
+              </label>
+            </div>
+          </div>
+          <div class="row switch-align-left">
+            <div class="col s12 switch">
+              <label class="blue-text text-darken-2 option-label">
+                <input type="checkbox" id="words" onclick="toggleWordCount()">
+                <span class="lever blue darken-2"></span>
+                Palabras (ej., parturición-=-quirográfico-=-tricentenarios)
+              </label>
+            </div>
+          </div>
+          <div id="word-options-row" style="display:none;">
+            <div class="row">
+              <div class="col s12 input-field">
+                <input type="number" id="word-count" min="3" max="25" value="3">
+                <label for="word-count">Número de Palabras</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 input-field">
+                <select id="language-select">
+                  <option value="" disabled selected>Elige idioma</option>
+                  <option value="en">🇬🇧 Inglés</option>
+                  <option value="fr">🇫🇷 Francés</option>
+                  <option value="es">🇪🇸 Español</option>
+                  <option value="zh">🇨🇳 Chino</option>
+                  <option value="de">🇩🇪 Alemán</option>
+                  <option value="it">🇮🇹 Italiano</option>
+                </select>
+                <label>Idioma</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Área para generar la contraseña -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel wide-card">
+          <h2 class="center-align blue-text text-darken-2"><i class="material-icons small">mouse</i> Mueve el ratón para generar la contraseña</h2>
+          <div class="password-generator-area" id="password-generator-area" aria-live="polite">
+            <ul class="blue-text text-darken-2">
+              <li><i class="material-icons">sync</i> Mueve el ratón dentro del cuadro para generar la contraseña</li>
+              <li><i class="material-icons">content_copy</i> Haz clic en el cuadro para copiar la contraseña al portapapeles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mostrar la contraseña generada y botones -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel wide-card">
+          <div class="row center-align">
+            <div class="col s12">
+              <p class="generated-password-text" id="generated-password"></p>
+            </div>
+          </div>
+          <div class="row center-align">
+            <div class="col s12">
+              <button id="copy-button" class="waves-effect waves-light btn blue darken-2">COPIAR CONTRASEÑA</button>
+            </div>
+          </div>
+          <div class="row center-align">
+            <div class="col s12">
+              <button id="generate-button" class="waves-effect waves-light btn blue darken-2">GENERAR CONTRASEÑA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Consejos para Crear Contraseñas Seguras -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel wide-card">
+          <h3 class="center-align blue-text text-darken-2">Consejos para Crear Contraseñas Seguras</h3>
+          <p>Usar contraseñas seguras es esencial para proteger tu información en línea. Aquí tienes algunos consejos:</p>
+          <ul class="collection">
+            <li class="collection-item">
+              <i class="material-icons left blue-text text-darken-2">text_fields</i>
+              Usa una combinación de letras mayúsculas y minúsculas.
+            </li>
+            <li class="collection-item">
+              <i class="material-icons left blue-text text-darken-2">dialpad</i>
+              Incluye números y símbolos.
+            </li>
+            <li class="collection-item">
+              <i class="material-icons left blue-text text-darken-2">person_outline</i>
+              Evita usar información personal como fechas de nacimiento o nombres.
+            </li>
+            <li class="collection-item">
+              <i class="material-icons left blue-text text-darken-2">block</i>
+              No reutilices contraseñas en diferentes sitios web.
+            </li>
+            <li class="collection-item">
+              <i class="material-icons left blue-text text-darken-2">update</i>
+              Cambia tus contraseñas regularmente.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enlace a artículo externo -->
+    <div class="row center-align">
+      <div class="col s12">
+        <p>
+          <a href="https://es.wikipedia.org/wiki/Seguridad_de_contrase%C3%B1a" target="_blank" class="blue-text text-darken-2">
+            Ir al artículo sobre Seguridad de Contraseñas
+          </a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="notification" class="notification" style="display: none;">
+    ¡Contraseña copiada al portapapeles!
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Genera Contraseñas y Contraseñas Seguras con ❤️ por 00B en 2024</p>
+    </div>
+  </footer>
+
+  <!-- Archivos JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="palabras.js"></script>
+  <script src="entropia.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Código de Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXXXX-X');
+  </script>
+</body>
+</html>
