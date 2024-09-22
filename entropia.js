@@ -1,6 +1,10 @@
 // entropia.js
 
 function calcularEntropia(contrasena, opciones, esBasadaEnPalabras) {
+  if (contrasena === '' || contrasena === 'SIN CONTRASEÑA GENERADA' || contrasena === 'Error al generar la contraseña') {
+    return 0;
+  }
+
   // Si la contraseña está basada en palabras
   if (esBasadaEnPalabras) {
     // Definir los bits de entropía por palabra
@@ -63,15 +67,30 @@ function evaluarFortaleza(entropia) {
   return '😄 Muy fuerte';
 }
 
+function estimarTiempoCraqueo(entropia) {
+  const intentosPorSegundo = 1e9; // Asumimos 1 billón de intentos por segundo
+  const segundos = Math.pow(2, entropia) / intentosPorSegundo;
+  
+  if (segundos < 60) return 'menos de un minuto';
+  if (segundos < 3600) return `${Math.floor(segundos / 60)} minutos`;
+  if (segundos < 86400) return `${Math.floor(segundos / 3600)} horas`;
+  if (segundos < 31536000) return `${Math.floor(segundos / 86400)} días`;
+  if (segundos < 315360000) return `${Math.floor(segundos / 31536000)} años`;
+  return 'más de 10 años';
+}
+
 function actualizarEntropiaYFortaleza(password, opciones, esBasadaEnPalabras) {
   const entropia = calcularEntropia(password, opciones, esBasadaEnPalabras);
   const fortaleza = evaluarFortaleza(entropia);
+  const tiempoCraqueo = estimarTiempoCraqueo(entropia);
 
   const entropiaElement = document.getElementById('entropia-valor');
   const fortalezaElement = document.getElementById('fortaleza-valor');
+  const tiempoCraqueoElement = document.getElementById('tiempo-craqueo');
 
   entropiaElement.textContent = entropia.toFixed(2) + " bits";
   fortalezaElement.textContent = fortaleza;
+  tiempoCraqueoElement.textContent = tiempoCraqueo;
 
   // Actualizar la clase basada en la fortaleza
   fortalezaElement.className = 'fortaleza-' + fortaleza.split(' ')[1].toLowerCase().replace(' ', '-');

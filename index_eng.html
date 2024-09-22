@@ -1,281 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secure Password Generator | Create Strong Passwords Online</title>
-  <meta name="description" content="Generate secure and random passwords with our online generator. Customize the length and characters to create strong and unique passwords.">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-  
-  <!-- Open Graph for Social Media -->
-  <meta property="og:title" content="Secure Password Generator" />
-  <meta property="og:description" content="Generate secure and random passwords with our online generator." />
-  <meta property="og:url" content="https://www.generadorpasswords.com/" />
-  <meta property="og:type" content="website" />
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Secure Password Generator" />
-  <meta name="twitter:description" content="Generate secure and random passwords with our online generator." />
-
-  <!-- hreflang for multilingual SEO -->
-  <link rel="alternate" href="/index_eng.html" hreflang="en" />
-  <link rel="alternate" href="/index.html" hreflang="es" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.generadorpasswords.com/" />
-
-  <!-- Structured Data Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Secure Password Generator",
-    "url": "https://www.generadorpasswords.com/",
-    "description": "Generate secure and random passwords with our online generator."
-  }
-  </script>
-
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Password Generator</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-  <!-- Language selector in the menu -->
   <div class="language-selector">
-    <a href="/index.html" id="es-lang">ES</a>
-    <a href="/index_eng.html" id="en-lang">ENG</a>
-  </div>
+    <a href="index.html" id="es-lang">ES</a>
+    <a href="index_eng.html" id="en-lang">ENG</a>
+</div>
 
-  <div class="menu-icon" onclick="toggleMenu()" aria-label="Open side menu" tabindex="0" role="button">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-  </div>
-
-  <div class="side-menu" id="sideMenu">
-    <h3><i class="material-icons">stars</i><span>Other Projects</span></h3>
-    <ul>
-      <li><a href="https://www.ghu.life" target="_blank" title="User Story Generator"><i class="material-icons">account_circle</i>GHU</a></li>
-    </ul>
-  </div>
-
-  <div class="container">
-    <h1 class="center-align blue-text text-darken-2">Secure Password Generator</h1>
-
-    <!-- Password generation options section -->
-    <div class="row">
-      <div class="col s12">
-        <div class="card-panel wide-card">
-          <h2 class="center-align blue-text text-darken-2"><i class="material-icons small">lock</i> How would you like to generate the password? <i class="material-icons small">lock</i></h2>
-
-          <div class="row">
-            <div class="col s12 input-field">
-              <label for="length" class="blue-text text-darken-2 password-length-label">Password Length:</label>
-              <input type="number" id="length" min="14" max="100" value="14" oninput="updateLengthValue(this.value)">
-              <p id="length-warning" class="warning-text" style="display: none;"></p>
-            </div>
-          </div>
-
-          <!-- Password generation options -->
-          <div class="row switch-align-left">
-            <div class="col s12 switch">
-              <label class="blue-text text-darken-2 option-label">
-                <input type="checkbox" id="lowercase" checked onclick="toggleOtherOptions('lowercase')">
-                <span class="lever blue darken-2"></span>
-                Lowercase (a-z)
-              </label>
-            </div>
-          </div>
-          <div class="row switch-align-left">
-            <div class="col s12 switch">
-              <label class="blue-text text-darken-2 option-label">
-                <input type="checkbox" id="uppercase" checked onclick="toggleOtherOptions('uppercase')">
-                <span class="lever blue darken-2"></span>
-                Uppercase (A-Z)
-              </label>
-            </div>
-          </div>
-          <div class="row switch-align-left">
-            <div class="col s12 switch">
-              <label class="blue-text text-darken-2 option-label">
-                <input type="checkbox" id="numbers" checked onclick="toggleOtherOptions('numbers')">
-                <span class="lever blue darken-2"></span>
-                Numbers (0-9)
-              </label>
-            </div>
-          </div>
-          <div class="row switch-align-left">
-            <div class="col s12 switch">
-              <label class="blue-text text-darken-2 option-label">
-                <input type="checkbox" id="symbols" checked onclick="toggleOtherOptions('symbols')">
-                <span class="lever blue darken-2"></span>
-                Symbols (!@#$%^&*)
-              </label>
-            </div>
-          </div>
-          <div class="row switch-align-left">
-            <div class="col s12 switch">
-              <label class="blue-text text-darken-2 option-label">
-                <input type="checkbox" id="brackets" onclick="toggleOtherOptions('brackets')">
-                <span class="lever blue darken-2"></span>
-                Brackets ([]{}())
-              </label>
-            </div>
-          </div>
-          <div class="row switch-align-left">
-            <div class="col s12 switch">
-              <label class="blue-text text-darken-2 option-label">
-                <input type="checkbox" id="high-ansi" onclick="toggleOtherOptions('high-ansi')">
-                <span class="lever blue darken-2"></span>
-                High ANSI Characters (±¥µç)
-              </label>
-            </div>
-          </div>
-          <div class="row switch-align-left">
-            <div class="col s12 switch">
-              <label class="blue-text text-darken-2 option-label">
-                <input type="checkbox" id="words" onclick="toggleWordCount()">
-                <span class="lever blue darken-2"></span>
-                Words (e.g., parturition-=-chirographic-=-tercentenaries)
-              </label>
-            </div>
-          </div>
-          <div id="word-options-row" style="display:none;">
-            <div class="row">
-              <div class="col s12 input-field">
-                <input type="number" id="word-count" min="3" max="25" value="3">
-                <label for="word-count">Number of Words</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12 input-field">
-                <select id="language-select">
-                  <option value="" disabled selected>Choose language</option>
-                  <option value="en">🇬🇧 English</option>
-                  <option value="fr">🇫🇷 French</option>
-                  <option value="es">🇪🇸 Spanish</option>
-                  <option value="zh">🇨🇳 Chinese</option>
-                  <option value="de">🇩🇪 German</option>
-                  <option value="it">🇮🇹 Italian</option>
-                </select>
-                <label>Language</label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="menu-icon" onclick="toggleMenu()" aria-label="Open side menu" tabindex="0" role="button">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
     </div>
 
-    <!-- Area to generate the password -->
-    <div class="row">
-      <div class="col s12">
-        <div class="card-panel wide-card">
-          <h2 class="center-align blue-text text-darken-2"><i class="material-icons small">mouse</i> Move the mouse to generate the password</h2>
-          <div class="password-generator-area" id="password-generator-area" aria-live="polite">
-            <ul class="blue-text text-darken-2">
-              <li><i class="material-icons">sync</i> Move the mouse inside the box to generate the password</li>
-              <li><i class="material-icons">content_copy</i> Click on the box to copy the password to the clipboard</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div id="sideMenu" class="side-menu">
+        <h3><i class="material-icons">stars</i>Other Projects</h3>
+        <ul>
+            <li><a href="https://www.ghu.life" target="_blank"><i class="material-icons">account_circle</i>GHU</a></li>
+        </ul>
     </div>
 
-    <!-- Display the generated password and buttons -->
-    <div class="row">
-      <div class="col s12">
-        <div class="card-panel wide-card">
-          <div class="row center-align">
-            <div class="col s12">
-              <p class="generated-password-text" id="generated-password"></p>
-            </div>
-          </div>
-          <div class="row center-align">
-            <div class="col s12">
-              <button id="copy-button" class="waves-effect waves-light btn blue darken-2">COPY PASSWORD</button>
-            </div>
-          </div>
-          <div class="row center-align">
-            <div class="col s12">
-              <button id="generate-button" class="waves-effect waves-light btn blue darken-2">GENERATE PASSWORD</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Section of Tips for Creating Secure Passwords -->
-    <div class="row">
-      <div class="col s12">
-        <div class="card-panel wide-card">
-          <h3 class="center-align blue-text text-darken-2">Tips for Creating Secure Passwords</h3>
-          <p>Using secure passwords is essential to protect your online information. Here are some tips:</p>
-          <ul class="collection">
-            <li class="collection-item">
-              <i class="material-icons left blue-text text-darken-2">text_fields</i>
-              Use a combination of uppercase and lowercase letters.
-            </li>
-            <li class="collection-item">
-              <i class="material-icons left blue-text text-darken-2">dialpad</i>
-              Include numbers and symbols.
-            </li>
-            <li class="collection-item">
-              <i class="material-icons left blue-text text-darken-2">person_outline</i>
-              Avoid using personal information like birthdates or names.
-            </li>
-            <li class="collection-item">
-              <i class="material-icons left blue-text text-darken-2">block</i>
-              Do not reuse passwords on different websites.
-            </li>
-            <li class="collection-item">
-              <i class="material-icons left blue-text text-darken-2">update</i>
-              Change your passwords regularly.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Link to external article -->
-    <div class="row center-align">
-      <div class="col s12">
-        <p>
-          <a href="https://en.wikipedia.org/wiki/Password_security" target="_blank" class="blue-text text-darken-2">
-            Go to the article on Password Security
-          </a>
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-  <div id="notification" class="notification" style="display: none;">
-    Password copied to clipboard!
-  </div>
-
-  <footer>
     <div class="container">
-      <p>Generate Passwords and Secure Passwords with ❤️ by 00B in 2024</p>
+        <h1 id="secure-password-generator" class="center-align blue-text text-darken-2">Secure Password Generator</h1>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel wide-card">
+                    <h2 id="lock-how-do-you-want-to-generate-the-password-lock" class="center-align blue-text text-darken-2">
+                        <i class="material-icons">lock</i> How do you want to generate the password? <i class="material-icons">lock</i>
+                    </h2>
+
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <input type="number" id="length" name="length" min="14" value="14" onchange="updateLengthValue(this.value)">
+                            <label for="length" class="password-length-label">Password Length:</label>
+                            <span id="length-warning" class="warning-text" style="display: none;"></span>
+                        </div>
+                    </div>
+
+                    <div class="row switch-align-left">
+                        <div class="col s12 switch">
+                            <label>
+                                <input type="checkbox" id="lowercase" checked onchange="toggleOtherOptions('lowercase')">
+                                <span class="lever blue darken-2"></span>
+                                Lowercase (a-z)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row switch-align-left">
+                        <div class="col s12 switch">
+                            <label>
+                                <input type="checkbox" id="uppercase" checked onchange="toggleOtherOptions('uppercase')">
+                                <span class="lever blue darken-2"></span>
+                                Uppercase (A-Z)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row switch-align-left">
+                        <div class="col s12 switch">
+                            <label>
+                                <input type="checkbox" id="numbers" checked onchange="toggleOtherOptions('numbers')">
+                                <span class="lever blue darken-2"></span>
+                                Numbers (0-9)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row switch-align-left">
+                        <div class="col s12 switch">
+                            <label>
+                                <input type="checkbox" id="symbols" checked onchange="toggleOtherOptions('symbols')">
+                                <span class="lever blue darken-2"></span>
+                                Symbols (!@#$%^&*)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row switch-align-left">
+                        <div class="col s12 switch">
+                            <label>
+                                <input type="checkbox" id="brackets" onchange="toggleOtherOptions('brackets')">
+                                <span class="lever blue darken-2"></span>
+                                Brackets ([]{}())
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row switch-align-left">
+                        <div class="col s12 switch">
+                            <label>
+                                <input type="checkbox" id="high-ansi" onchange="toggleOtherOptions('high-ansi')">
+                                <span class="lever blue darken-2"></span>
+                                High ANSI Characters (±¥µç)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row switch-align-left">
+                        <div class="col s12 switch">
+                            <label>
+                                <input type="checkbox" id="words" onchange="toggleWordCount()">
+                                <span class="lever blue darken-2"></span>
+                                Words (e.g., parturition-=-quirographic-=-tricentennial)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="word-options-row" style="display:none;">
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <input type="number" id="word-count" name="word-count" min="3" value="3">
+                                <label for="word-count">Number of Words</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <select id="language-select">
+                                    <option value="en">🇬🇧 English</option>
+                                    <option value="es">🇪🇸 Spanish</option>
+                                    <option value="fr">🇫🇷 French</option>
+                                    <option value="de">🇩🇪 German</option>
+                                    <option value="it">🇮🇹 Italian</option>
+                                </select>
+                                <label>Choose language</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel wide-card">
+                    <h2 id="mouse-move-the-mouse-to-generate-the-password" class="center-align blue-text text-darken-2">
+                        <i class="material-icons">mouse</i> Move the mouse to generate the password
+                    </h2>
+                    <div id="password-generator-area" class="password-generator-area" aria-live="polite">
+                        <ul>
+                            <li><i class="material-icons">sync</i> Move the mouse inside the box to generate the password</li>
+                            <li><i class="material-icons">content_copy</i> Click on the box to copy the password to the clipboard</li>
+                        </ul>
+                    </div>
+                    <div id="generated-password" class="generated-password-text center-align"></div>
+                    
+                    <!-- KPI below the generated password -->
+                    <div class="password-info">
+                        <div class="password-stats-container">
+                            <div class="entropy-container">
+                                <span class="entropy-label">Entropy:</span>
+                                <span id="entropia-valor"></span>
+                            </div>
+                            <div class="crack-time-container">
+                                <span class="crack-time-label">Estimated crack time:</span>
+                                <span id="tiempo-craqueo"></span>
+                            </div>
+                            <div class="strength-container">
+                                <span class="strength-label">Strength:</span>
+                                <span id="fortaleza-valor"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel wide-card">
+                    <div class="row center-align">
+                        <div class="col s12">
+                            <button id="copy-button" class="btn waves-effect waves-light blue darken-2">COPY PASSWORD</button>
+                        </div>
+                    </div>
+                    <div class="row center-align">
+                        <div class="col s12">
+                            <button id="generate-button" class="btn waves-effect waves-light blue darken-2">GENERATE PASSWORD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel wide-card">
+                    <h3 class="center-align blue-text text-darken-2">Tips for Creating Secure Passwords</h3>
+                    <ul>
+                        <li><i class="material-icons">text_fields</i> Use a combination of uppercase and lowercase letters.</li>
+                        <li><i class="material-icons">dialpad</i> Include numbers and symbols.</li>
+                        <li><i class="material-icons">person_outline</i> Avoid using personal information such as birthdays or names.</li>
+                        <li><i class="material-icons">block</i> Don't reuse passwords across different websites.</li>
+                        <li><i class="material-icons">update</i> Change your passwords regularly.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row center-align">
+            <div class="col s12">
+                <a href="https://en.wikipedia.org/wiki/Password_strength" class="blue-text text-darken-2" target="_blank">Go to the article on Password Security</a>
+            </div>
+        </div>
     </div>
-  </footer>
 
-  <!-- JavaScript Files -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="palabras.js"></script>
-  <script src="entropia.js"></script>
-  <script src="script.js"></script>
+    <div id="notification" class="notification" style="display: none;">
+        Password copied to clipboard!
+    </div>
 
-  <!-- Google Analytics Code -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXXXXXX-X');
-  </script>
+    <footer class="page-footer blue darken-2">
+        <div class="container">
+            Generate Passwords and Secure Passwords with ❤️ by 00B in 2024
+        </div>
+    </footer>
+
+    <script src="entropia.js"></script>
+    <script src="palabras.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

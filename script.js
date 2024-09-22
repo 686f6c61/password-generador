@@ -4,6 +4,11 @@ const requiredEntropy = 100;
 let lastGenerationTime = 0;
 const GENERATION_INTERVAL = 50;
 
+function calculateRealEntropy(password) {
+  const charSet = new Set(password);
+  return Math.log2(Math.pow(charSet.size, password.length));
+}
+
 function generateRandomEntropy() {
   return Math.floor(Math.random() * 1000) + 100; // Genera un número entre 100 y 1099
 }
@@ -60,8 +65,6 @@ async function obtenerPalabras(numPalabras, idioma) {
 }
 
 async function generatePassword() {
-  entropy = generateRandomEntropy();
-
   const length = Math.max(14, parseInt(document.getElementById('length').value));
   const useLowercase = document.getElementById('lowercase').checked;
   const useUppercase = document.getElementById('uppercase').checked;
@@ -83,7 +86,7 @@ async function generatePassword() {
 
   if (charset === '' && !useWords) {
     document.getElementById('generated-password').textContent = 'SIN CONTRASEÑA GENERADA';
-    actualizarEntropiaYFortaleza('', {}, false);
+    actualizarInterfaz('', {}, false);
     return;
   }
 
@@ -106,7 +109,7 @@ async function generatePassword() {
     } catch (error) {
       console.error('Error detallado al obtener palabras:', error);
       document.getElementById('generated-password').textContent = 'Error al generar la contraseña';
-      actualizarEntropiaYFortaleza('', {}, false);
+      actualizarInterfaz('', {}, false);
       return;
     }
   } else {
@@ -125,7 +128,16 @@ async function generatePassword() {
   password = ensureSelectedOptionsIncluded(password, options);
 
   document.getElementById('generated-password').textContent = password;
-  actualizarEntropiaYFortaleza(password, options, useWords);
+  actualizarInterfaz(password, options, useWords);
+}
+
+function copyPasswordToClipboard() {
+  const password = document.getElementById('generated-password').textContent;
+  if (password !== 'SIN CONTRASEÑA GENERADA' && password !== 'Error al generar la contraseña') {
+    navigator.clipboard.writeText(password).then(() => {
+      showCopiedNotification();
+    });
+  }
 }
 
 function initializePasswordGenerator() {
@@ -142,14 +154,10 @@ function initializePasswordGenerator() {
     }
   });
 
-  passwordGeneratorArea.addEventListener('click', function() {
-    const password = document.getElementById('generated-password').textContent;
-    if (password !== 'SIN CONTRASEÑA GENERADA' && password !== 'Error al generar la contraseña') {
-      navigator.clipboard.writeText(password).then(() => {
-        showCopiedNotification();
-      });
-    }
-  });
+  passwordGeneratorArea.addEventListener('click', copyPasswordToClipboard);
+
+  // Nuevo event listener para copiar la contraseña al hacer clic en ella
+  document.getElementById('generated-password').addEventListener('click', copyPasswordToClipboard);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -160,14 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
     generatePassword();
   });
 
-  document.getElementById('copy-button').addEventListener('click', function() {
-    const password = document.getElementById('generated-password').textContent;
-    if (password !== 'SIN CONTRASEÑA GENERADA' && password !== 'Error al generar la contraseña') {
-      navigator.clipboard.writeText(password).then(() => {
-        showCopiedNotification();
-      });
-    }
-  });
+  document.getElementById('copy-button').addEventListener('click', copyPasswordToClipboard);
 
   document.getElementById('words').addEventListener('change', toggleWordCount);
 
@@ -242,4 +243,18 @@ window.onclick = function(event) {
       document.querySelector('.menu-icon').classList.remove('change');
     }
   }
+}
+
+function actualizarInterfaz(password, options, esBasadaEnPalabras) {
+  const entropia = calculateRealEntropy(password);
+  const fortaleza = evaluarFortaleza(entropia);
+  const tiempoCraqueo = estimarTiempoCraqueo(entropia);
+
+  document.getElementById('entropia-valor').textContent = entropia.toFixed(2) + " bits";
+  document.getElementById('fortaleza-valor').textContent = fortaleza;
+  document.getElementById('tiempo-craqueo').textContent = tiempoCraqueo;
+
+  // Actualizar la clase basada en la fortaleza
+  const fortalezaElement = document.getElementById('fortaleza-valor');
+  fortalezaElement.className = 'fortaleza-' + fortaleza.split(' ')[1].toLowerCase().replace(' ', '-');
 }
