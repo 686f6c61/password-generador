@@ -11,10 +11,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-  <div class="language-selector">
-    <a href="index.html" id="es-lang">ES</a>
-    <a href="index_eng.html" id="en-lang">ENG</a>
-</div>
+    <div class="language-selector">
+        <a href="index.html" id="es-lang">ES</a>
+        <a href="index_eng.html" id="en-lang">ENG</a>
+    </div>
+
+    <div class="dark-mode-switch">
+        <div class="switch">
+            <label>
+                <input type="checkbox" id="darkModeToggle">
+                <span class="lever"></span>
+                <i class="material-icons">brightness_4</i>
+            </label>
+        </div>
+    </div>
 
     <div class="menu-icon" onclick="toggleMenu()" aria-label="Abrir menú lateral" tabindex="0" role="button">
         <div class="bar1"></div>
@@ -26,6 +36,12 @@
         <h3><i class="material-icons">stars</i>Otros Proyectos</h3>
         <ul>
             <li><a href="https://www.ghu.life" target="_blank"><i class="material-icons">account_circle</i>GHU</a></li>
+        </ul>
+        <h3><i class="material-icons">article</i>Artículos</h3>
+        <ul>
+            <li><a href="#que-es-entropia">¿Qué es la entropía?</a></li>
+            <li><a href="#que-es-fuerza-bruta">¿Qué es la fuerza bruta?</a></li>
+            <li><a href="#consejos-crear-contraseñas">Consejos de seguridad</a></li>
         </ul>
     </div>
 
@@ -155,7 +171,6 @@
                     </div>
                     <div id="generated-password" class="generated-password-text center-align"></div>
                     
-                    <!-- KPI debajo de la contraseña generada -->
                     <div class="password-info">
                         <div class="password-stats-container">
                             <div class="entropy-container">
@@ -193,7 +208,73 @@
             </div>
         </div>
 
-        <div class="row">
+        <div id="que-es-entropia" class="row">
+            <div class="col s12">
+                <div class="card-panel wide-card">
+                    <h3 class="center-align blue-text text-darken-2">¿Qué es la entropía de una contraseña?</h3>
+                    <p>La entropía de una contraseña es una medida de su fortaleza o imprevisibilidad. En el contexto de la seguridad informática, la entropía se expresa en bits y representa la cantidad de información o aleatoriedad contenida en una contraseña.</p>
+                    
+                    <p>Una contraseña con alta entropía es más difícil de adivinar o descifrar mediante ataques de fuerza bruta o de diccionario. La entropía se calcula utilizando la siguiente fórmula:</p>
+                    
+                    <div class="formula">
+                        <p><strong>E = L * log<sub>2</sub>(R)</strong></p>
+                        <p>Donde:</p>
+                        <ul>
+                            <li><strong>E</strong> es la entropía en bits</li>
+                            <li><strong>L</strong> es la longitud de la contraseña</li>
+                            <li><strong>R</strong> es el tamaño del conjunto de caracteres posibles</li>
+                        </ul>
+                    </div>
+        
+                    <p>Por ejemplo, para una contraseña de 8 caracteres que utiliza letras minúsculas y mayúsculas (52 caracteres) y números (10 caracteres), el cálculo sería:</p>
+        
+                    <div class="formula">
+                        <p>E = 8 * log<sub>2</sub>(62) ≈ 47.6 bits</p>
+                    </div>
+        
+                    <p>En el caso de contraseñas basadas en palabras, el cálculo es ligeramente diferente. Se utiliza el tamaño del diccionario en lugar del conjunto de caracteres:</p>
+        
+                    <div class="formula">
+                        <p>E = N * log<sub>2</sub>(D)</p>
+                        <p>Donde:</p>
+                        <ul>
+                            <li><strong>N</strong> es el número de palabras en la contraseña</li>
+                            <li><strong>D</strong> es el tamaño del diccionario</li>
+                        </ul>
+                    </div>
+        
+                    <p>Una mayor entropía indica una contraseña más segura. En general, se recomienda una entropía mínima de 60 bits para una seguridad adecuada, aunque para información altamente sensible, se pueden requerir valores más altos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="que-es-fuerza-bruta" class="row">
+            <div class="col s12">
+                <div class="card-panel wide-card">
+                    <h3 class="center-align blue-text text-darken-2">¿Qué es la fuerza bruta y sus variantes?</h3>
+                    
+                    <h4><i class="material-icons">security</i> Ataque de fuerza bruta</h4>
+                    <p>Un ataque de fuerza bruta es un método de descifrado de contraseñas que consiste en probar sistemáticamente todas las combinaciones posibles de caracteres hasta encontrar la correcta. Aunque es un método garantizado para encontrar cualquier contraseña, puede ser extremadamente lento para contraseñas largas y complejas.</p>
+        
+                    <h4><i class="material-icons">content_paste</i> Credential Stuffing</h4>
+                    <p>El credential stuffing es una técnica que utiliza pares de nombres de usuario y contraseñas filtrados de una brecha de seguridad para intentar acceder a otras cuentas. Este método explota la tendencia de los usuarios a reutilizar las mismas credenciales en múltiples sitios.</p>
+        
+                    <h4><i class="material-icons">book</i> Ataque de diccionario</h4>
+                    <p>Un ataque de diccionario utiliza una lista predefinida de palabras y frases comunes para intentar adivinar la contraseña. Es más rápido que la fuerza bruta pura, pero menos exhaustivo. Es especialmente efectivo contra contraseñas que utilizan palabras comunes.</p>
+        
+                    <h4><i class="material-icons">shuffle</i> Ataques híbridos de fuerza bruta</h4>
+                    <p>Los ataques híbridos combinan elementos de los ataques de diccionario y de fuerza bruta. Pueden comenzar con palabras de un diccionario y luego aplicar transformaciones comunes (como añadir números al final) o combinar palabras del diccionario con secuencias de caracteres generadas por fuerza bruta.</p>
+        
+                    <h4><i class="material-icons">flip_to_back</i> Ataques de fuerza bruta inversos</h4>
+                    <p>En lugar de intentar descifrar una contraseña específica, los ataques de fuerza bruta inversos generan hashes de contraseñas comunes y los comparan con una base de datos de hashes robados. Este método es eficaz para descifrar múltiples contraseñas simultáneamente si se tiene acceso a una base de datos de hashes.</p>
+        
+                    <h4><i class="material-icons">memory</i> Aceleración de fuerza bruta por GPU</h4>
+                    <p>La aceleración por GPU utiliza el poder de procesamiento de las tarjetas gráficas para realizar ataques de fuerza bruta mucho más rápidamente que con CPUs tradicionales. Las GPUs son particularmente eficientes en realizar múltiples cálculos simples en paralelo, lo que las hace ideales para probar un gran número de combinaciones de contraseñas rápidamente.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="consejos-crear-contraseñas" class="row">
             <div class="col s12">
                 <div class="card-panel wide-card">
                     <h3 class="center-align blue-text text-darken-2">Consejos para Crear Contraseñas Seguras</h3>
@@ -228,5 +309,6 @@
     <script src="entropia.js"></script>
     <script src="palabras.js"></script>
     <script src="script.js"></script>
+    <script src="modoNoche.js"></script>
 </body>
 </html>

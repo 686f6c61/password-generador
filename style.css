@@ -304,3 +304,164 @@ footer p {
 #word-options-row .row {
   margin-bottom: 0;
 }
+
+.formula {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.formula p {
+  margin: 5px 0;
+}
+
+.formula ul {
+  padding-left: 20px;
+}
+/* Estilos para modo oscuro */
+body.dark-mode .formula {
+  background-color: #2e2e2e;
+}
+
+.prevention-tips {
+  background-color: #e8f5e9;
+  border-left: 5px solid #4caf50;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.prevention-tips h4 {
+  color: #4caf50;
+  margin-top: 0;
+}
+
+/* Estilos para modo oscuro */
+body.dark-mode .prevention-tips {
+  background-color: #1b5e20;
+  border-left-color: #81c784;
+}
+
+body.dark-mode .prevention-tips h4 {
+  color: #81c784;
+}
+
+/* Estilos para el switch de modo oscuro */
+.dark-mode-switch {
+  position: fixed;
+  top: 20px;
+  right: 70px; /* 30px a la izquierda del menú */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.dark-mode-switch .lever {
+  margin: 0 10px;
+}
+
+.dark-mode-switch i {
+  color: #1565c0;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .card-panel,
+body.dark-mode .password-info,
+body.dark-mode .side-menu {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .blue-text {
+  color: #64b5f6 !important;
+}
+
+body.dark-mode .password-generator-area {
+  border-color: #64b5f6;
+}
+
+body.dark-mode .generated-password-text {
+  background-color: #2e2e2e;
+}
+
+body.dark-mode .btn {
+  background-color: #64b5f6;
+}
+
+body.dark-mode .btn:hover {
+  background-color: #2196f3;
+}
+
+body.dark-mode .side-menu li a:hover {
+  background-color: #2e2e2e;
+  color: #64b5f6;
+}
+
+body.dark-mode footer {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .language-selector a,
+body.dark-mode .side-menu li a,
+body.dark-mode .side-menu h3 {
+  color: #64b5f6;
+}
+
+body.dark-mode .bar1,
+body.dark-mode .bar2,
+body.dark-mode .bar3 {
+  background-color: #64b5f6;
+}
+
+body.dark-mode .dark-mode-switch i {
+  color: #64b5f6;
+}
+
+#que-es-fuerza-bruta h4 {
+  font-size: 1.5rem; /* Reducido 3px del tamaño por defecto de Materialize */
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#que-es-fuerza-bruta h4 .material-icons {
+  margin-right: 10px;
+  font-size: 1.5rem; /* Ajusta el tamaño del icono para que coincida con el texto */
+}
+
+/* Estilos para modo oscuro */
+body.dark-mode #que-es-fuerza-bruta h4 {
+  color: #64b5f6; /* Color para el modo oscuro */
+}
+
+body.dark-mode #que-es-fuerza-bruta h4 .material-icons {
+  color: #64b5f6; /* Color para los iconos en modo oscuro */
+}
+
+/* Ajustes adicionales para mejorar la legibilidad */
+#que-es-fuerza-bruta p {
+  margin-left: 34px; /* Alinea el texto del párrafo con el texto del encabezado */
+}
+
+/* Responsive design para pantallas pequeñas */
+@media only screen and (max-width: 600px) {
+  #que-es-fuerza-bruta h4 {
+      font-size: 1.3rem; /* Reduce aún más el tamaño en pantallas pequeñas */
+  }
+
+  #que-es-fuerza-bruta h4 .material-icons {
+      font-size: 1.3rem;
+  }
+
+  #que-es-fuerza-bruta p {
+      margin-left: 0; /* Elimina el margen en pantallas pequeñas para un mejor uso del espacio */
+  }
+}

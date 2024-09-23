@@ -11,10 +11,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-  <div class="language-selector">
-    <a href="index.html" id="es-lang">ES</a>
-    <a href="index_eng.html" id="en-lang">ENG</a>
-</div>
+    <div class="language-selector">
+        <a href="index.html" id="es-lang">ES</a>
+        <a href="index_eng.html" id="en-lang">ENG</a>
+    </div>
+
+    <div class="dark-mode-switch">
+        <div class="switch">
+            <label>
+                <input type="checkbox" id="darkModeToggle">
+                <span class="lever"></span>
+                <i class="material-icons">brightness_4</i>
+            </label>
+        </div>
+    </div>
 
     <div class="menu-icon" onclick="toggleMenu()" aria-label="Open side menu" tabindex="0" role="button">
         <div class="bar1"></div>
@@ -27,15 +37,21 @@
         <ul>
             <li><a href="https://www.ghu.life" target="_blank"><i class="material-icons">account_circle</i>GHU</a></li>
         </ul>
+        <h3><i class="material-icons">article</i>Articles</h3>
+        <ul>
+            <li><a href="#what-is-entropy">What is entropy?</a></li>
+            <li><a href="#what-is-brute-force">What is brute force?</a></li>
+            <li><a href="#password-security-tips">Security tips</a></li>
+        </ul>
     </div>
 
     <div class="container">
-        <h1 id="secure-password-generator" class="center-align blue-text text-darken-2">Secure Password Generator</h1>
+        <h1 id="generador-de-contraseñas-seguras" class="center-align blue-text text-darken-2">Secure Password Generator</h1>
 
         <div class="row">
             <div class="col s12">
                 <div class="card-panel wide-card">
-                    <h2 id="lock-how-do-you-want-to-generate-the-password-lock" class="center-align blue-text text-darken-2">
+                    <h2 id="lock-cómo-quieres-generar-la-contraseña-lock" class="center-align blue-text text-darken-2">
                         <i class="material-icons">lock</i> How do you want to generate the password? <i class="material-icons">lock</i>
                     </h2>
 
@@ -102,7 +118,7 @@
                             <label>
                                 <input type="checkbox" id="high-ansi" onchange="toggleOtherOptions('high-ansi')">
                                 <span class="lever blue darken-2"></span>
-                                High ANSI Characters (±¥µç)
+                                High ANSI characters (±¥µç)
                             </label>
                         </div>
                     </div>
@@ -112,7 +128,7 @@
                             <label>
                                 <input type="checkbox" id="words" onchange="toggleWordCount()">
                                 <span class="lever blue darken-2"></span>
-                                Words (e.g., parturition-=-quirographic-=-tricentennial)
+                                Words (e.g., childbirth-=-chirographic-=-tricentenaries)
                             </label>
                         </div>
                     </div>
@@ -144,18 +160,17 @@
         <div class="row">
             <div class="col s12">
                 <div class="card-panel wide-card">
-                    <h2 id="mouse-move-the-mouse-to-generate-the-password" class="center-align blue-text text-darken-2">
+                    <h2 id="mouse-mueve-el-ratón-para-generar-la-contraseña" class="center-align blue-text text-darken-2">
                         <i class="material-icons">mouse</i> Move the mouse to generate the password
                     </h2>
                     <div id="password-generator-area" class="password-generator-area" aria-live="polite">
                         <ul>
-                            <li><i class="material-icons">sync</i> Move the mouse inside the box to generate the password</li>
-                            <li><i class="material-icons">content_copy</i> Click on the box to copy the password to the clipboard</li>
+                            <li><i class="material-icons">sync</i> Move the mouse within the box to generate the password</li>
+                            <li><i class="material-icons">content_copy</i> Click the box to copy the password to the clipboard</li>
                         </ul>
                     </div>
                     <div id="generated-password" class="generated-password-text center-align"></div>
                     
-                    <!-- KPI below the generated password -->
                     <div class="password-info">
                         <div class="password-stats-container">
                             <div class="entropy-container">
@@ -193,15 +208,81 @@
             </div>
         </div>
 
-        <div class="row">
+        <div id="what-is-entropy" class="row">
             <div class="col s12">
                 <div class="card-panel wide-card">
-                    <h3 class="center-align blue-text text-darken-2">Tips for Creating Secure Passwords</h3>
+                    <h3 class="center-align blue-text text-darken-2">What is password entropy?</h3>
+                    <p>Password entropy is a measure of its strength or unpredictability. In the context of computer security, entropy is expressed in bits and represents the amount of information or randomness contained in a password.</p>
+                    
+                    <p>A password with high entropy is more difficult to guess or crack through brute force or dictionary attacks. Entropy is calculated using the following formula:</p>
+                    
+                    <div class="formula">
+                        <p><strong>E = L * log<sub>2</sub>(R)</strong></p>
+                        <p>Where:</p>
+                        <ul>
+                            <li><strong>E</strong> is the entropy in bits</li>
+                            <li><strong>L</strong> is the length of the password</li>
+                            <li><strong>R</strong> is the size of the possible character set</li>
+                        </ul>
+                    </div>
+        
+                    <p>For example, for an 8-character password that uses lowercase and uppercase letters (52 characters) and numbers (10 characters), the calculation would be:</p>
+        
+                    <div class="formula">
+                        <p>E = 8 * log<sub>2</sub>(62) ≈ 47.6 bits</p>
+                    </div>
+        
+                    <p>In the case of word-based passwords, the calculation is slightly different. The dictionary size is used instead of the character set:</p>
+        
+                    <div class="formula">
+                        <p>E = N * log<sub>2</sub>(D)</p>
+                        <p>Where:</p>
+                        <ul>
+                            <li><strong>N</strong> is the number of words in the password</li>
+                            <li><strong>D</strong> is the dictionary size</li>
+                        </ul>
+                    </div>
+        
+                    <p>Higher entropy indicates a more secure password. In general, a minimum entropy of 60 bits is recommended for adequate security, although higher values may be required for highly sensitive information.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="what-is-brute-force" class="row">
+            <div class="col s12">
+                <div class="card-panel wide-card">
+                    <h3 class="center-align blue-text text-darken-2">What is brute force and its variants?</h3>
+                    
+                    <h4><i class="material-icons">security</i> Brute force attack</h4>
+                    <p>A brute force attack is a method of password cracking that involves systematically trying all possible combinations of characters until the correct one is found. Although it is a guaranteed method for finding any password, it can be extremely slow for long and complex passwords.</p>
+        
+                    <h4><i class="material-icons">content_paste</i> Credential stuffing</h4>
+                    <p>Credential stuffing is a technique that uses username and password pairs leaked from a security breach to try and access other accounts. This method exploits users' tendency to reuse the same credentials across multiple sites.</p>
+        
+                    <h4><i class="material-icons">book</i> Dictionary attack</h4>
+                    <p>A dictionary attack uses a predefined list of common words and phrases to try to guess the password. It is faster than pure brute force but less exhaustive. It is especially effective against passwords that use common words.</p>
+        
+                    <h4><i class="material-icons">shuffle</i> Hybrid brute force attacks</h4>
+                    <p>Hybrid attacks combine elements of dictionary and brute force attacks. They may start with words from a dictionary and then apply common transformations (such as adding numbers at the end) or combine dictionary words with brute force-generated character sequences.</p>
+        
+                    <h4><i class="material-icons">flip_to_back</i> Reverse brute force attacks</h4>
+                    <p>Instead of attempting to crack a specific password, reverse brute force attacks generate hashes of common passwords and compare them to a database of stolen hashes. This method is effective at cracking multiple passwords simultaneously if access to a hash database is available.</p>
+        
+                    <h4><i class="material-icons">memory</i> GPU-accelerated brute force</h4>
+                    <p>GPU acceleration uses the processing power of graphics cards to perform brute force attacks much faster than traditional CPUs. GPUs are particularly efficient at performing many simple calculations in parallel, making them ideal for quickly testing a large number of password combinations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="password-security-tips" class="row">
+            <div class="col s12">
+                <div class="card-panel wide-card">
+                    <h3 class="center-align blue-text text-darken-2">Tips for creating secure passwords</h3>
                     <ul>
                         <li><i class="material-icons">text_fields</i> Use a combination of uppercase and lowercase letters.</li>
                         <li><i class="material-icons">dialpad</i> Include numbers and symbols.</li>
                         <li><i class="material-icons">person_outline</i> Avoid using personal information such as birthdays or names.</li>
-                        <li><i class="material-icons">block</i> Don't reuse passwords across different websites.</li>
+                        <li><i class="material-icons">block</i> Do not reuse passwords across different websites.</li>
                         <li><i class="material-icons">update</i> Change your passwords regularly.</li>
                     </ul>
                 </div>
@@ -210,7 +291,7 @@
 
         <div class="row center-align">
             <div class="col s12">
-                <a href="https://en.wikipedia.org/wiki/Password_strength" class="blue-text text-darken-2" target="_blank">Go to the article on Password Security</a>
+                <a href="https://en.wikipedia.org/wiki/Password_security" class="blue-text text-darken-2" target="_blank">Go to the article on Password Security</a>
             </div>
         </div>
     </div>
@@ -228,5 +309,6 @@
     <script src="entropia.js"></script>
     <script src="palabras.js"></script>
     <script src="script.js"></script>
+    <script src="modoNoche.js"></script>
 </body>
 </html>
